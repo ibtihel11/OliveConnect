@@ -7,8 +7,11 @@ Projet de groupe (4 membres) – 2ème année ING INFO : Bases de données massi
 
 ## Prérequis
 
+## Prérequis
+
 - **JDK 21**
 - **MongoDB** lancé en local sur `localhost:27017` (base `oliveconnect`)
+  - Optionnel : `mongosh mongodb://localhost:27017 --file scripts/init-mongo.js` crée la base et les collections.
 - Maven : inutile de l'installer, le wrapper `mvnw` est fourni
 - Postman (pour tester les API)
 
