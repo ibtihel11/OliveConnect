@@ -1,0 +1,287 @@
+@startuml OliveConnect_Diagramme_de_classes_global
+skinparam shadowing false
+skinparam dpi 130
+skinparam backgroundColor white
+skinparam defaultFontName "DejaVu Sans"
+skinparam defaultFontSize 13
+skinparam classAttributeIconSize 0
+skinparam roundCorner 10
+skinparam linetype polyline
+skinparam legendBackgroundColor #FFFFFF
+skinparam legendBorderColor #999999
+skinparam nodesep 45
+skinparam ranksep 55
+skinparam ArrowColor #444444
+skinparam ArrowFontSize 12
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #555555
+  HeaderBackgroundColor #F2F2F2
+}
+skinparam package {
+  FontSize 16
+  FontStyle bold
+  BorderThickness 2
+}
+skinparam note {
+  BackgroundColor #FFFBE0
+  BorderColor #B8A800
+  FontSize 12
+}
+hide empty members
+title <size:22>OliveConnect – Diagramme de classes global</size>
+
+
+    abstract class Utilisateur #DCEFD3 {
+      - id : String
+      - nom : String
+      - prenom : String
+      - email : String
+      - motDePasse : String
+      - telephone : String
+      - role : Role
+      - actif : Boolean
+    }
+    enum Role #DCEFD3 {
+      AGRICULTEUR
+      RESPONSABLE_COLLECTE
+      CHEF_EQUIPE
+      RESPONSABLE_LOGISTIQUE
+      RESPONSABLE_PRESSOIR
+      ADMINISTRATEUR
+    }
+    class ResponsablePressoir #DCEFD3
+    class Agriculteur #DCEFD3
+    class ChefEquipe #DCEFD3
+    class ResponsableLogistique #DCEFD3
+    class ResponsableCollecte #DCEFD3
+    class Administrateur #DCEFD3
+
+    class Verger #DCEFD3 {
+      - id : String
+      - nom : String
+      - adresse : String
+      - superficie : Double
+      - latitude : Double
+      - longitude : Double
+      - statut : StatutVerger
+    }
+    class Parcelle #DCEFD3 {
+      - id : String
+      - nom : String
+      - superficie : Double
+    }
+    class VarieteOlive #DCEFD3 {
+      - id : String
+      - nom : String
+      - description : String
+    }
+    class Recolte #DCEFD3 {
+      - id : String
+      - dateSouhaitee : LocalDate
+      - quantiteEstimee : Double
+      - quantiteRecoltee : Double
+      - urgente : Boolean
+      - statut : StatutRecolte
+      - historiqueStatuts : List<HistoriqueRecolte>
+    }
+    class HistoriqueRecolte #DCEFD3 {
+      - statut : StatutRecolte
+      - date : LocalDateTime
+      - auteurId : String
+    }
+    class Tournee #DCEFD3 {
+      - id : String
+      - dateDebut : LocalDateTime
+      - dateFin : LocalDateTime
+      - statut : StatutTournee
+    }
+    enum StatutVerger #DCEFD3 {
+      EN_ATTENTE
+      EN_RECOLTE
+      RECOLTE_TERMINEE
+    }
+    enum StatutRecolte #DCEFD3 {
+      EN_ATTENTE
+      VALIDEE
+      PLANIFIEE
+      EN_COURS
+      TERMINEE
+      ANNULEE
+    }
+    enum StatutTournee #DCEFD3 {
+      PLANIFIEE
+      EN_COURS
+      TERMINEE
+      ANNULEE
+    }
+
+  class Alerte #FBE0BA {
+    - id : String
+    - type : TypeAlerte
+    - description : String
+    - latitude : Double
+    - longitude : Double
+    - dateCreation : LocalDateTime
+    - statut : StatutAlerte
+    - historique : List<HistoriqueAlerte>
+  }
+  class HistoriqueAlerte #FBE0BA {
+    - statut : StatutAlerte
+    - date : LocalDateTime
+    - auteurId : String
+  }
+  class Notification #FBE0BA {
+    - id : String
+    - titre : String
+    - message : String
+    - dateEnvoi : LocalDateTime
+    - lu : Boolean
+  }
+  enum TypeAlerte #FBE0BA {
+    MATURITE
+    PLUIE
+    RAVAGEURS
+  }
+  enum StatutAlerte #FBE0BA {
+    NOUVELLE
+    PRISE_EN_CHARGE
+    RESOLUE
+  }
+
+  abstract class Ressource #E1D3F2 {
+    - id : String
+    - nom : String
+    - disponibilite : Boolean
+  }
+  class Ouvrier #E1D3F2 {
+    - specialite : String
+    - saisonnier : Boolean
+  }
+  class Tracteur #E1D3F2 {
+    - immatriculation : String
+    - puissance : Double
+  }
+  class Benne #E1D3F2 {
+    - capacite : Double
+    - immatriculation : String
+  }
+  class Materiel #E1D3F2 {
+    - type : String
+    - quantiteStock : Integer
+    - seuilMinimum : Integer
+  }
+  class Affectation #E1D3F2 {
+    - id : String
+    - dateDebut : LocalDateTime
+    - dateFin : LocalDateTime
+    - statut : String
+  }
+
+  class Pressoir #C9EBEB {
+    - id : String
+    - nom : String
+    - adresse : String
+    - capaciteTraitement : Double
+  }
+  class Reception #C9EBEB {
+    - id : String
+    - dateReception : LocalDateTime
+    - poids : Double
+    - qualite : QualiteReception
+  }
+  class ReleveMaturite #C9EBEB {
+    - id : String
+    - dateReleve : LocalDateTime
+    - niveauMaturite : Double
+  }
+  class DonneeMeteo #C9EBEB {
+    - id : String
+    - dateReleve : LocalDateTime
+    - temperature : Double
+    - humidite : Double
+    - precipitation : Double
+  }
+  enum QualiteReception #C9EBEB {
+    EXCELLENTE
+    BONNE
+    MOYENNE
+    MAUVAISE
+  }
+
+' ---------- Héritages ----------
+Utilisateur <|-- ResponsablePressoir
+Utilisateur <|-- Agriculteur
+Utilisateur <|-- ChefEquipe
+Utilisateur <|-- ResponsableLogistique
+Utilisateur <|-- ResponsableCollecte
+Utilisateur <|-- Administrateur
+Utilisateur --> Role
+Ressource <|-- Ouvrier
+Ressource <|-- Tracteur
+Ressource <|-- Benne
+Ressource <|-- Materiel
+
+' ---------- M1 ----------
+Agriculteur "1" -- "1..*" Verger : possède
+Verger "1" *-- "1..*" Parcelle : contient
+Parcelle "*" --> "1" VarieteOlive : utilise
+Verger "1" -- "0..*" Recolte : concerne
+Tournee "0..1" -- "1..*" Recolte : regroupe
+Recolte "1" *-- "0..*" HistoriqueRecolte : historise
+ChefEquipe "1" -- "0..*" Tournee : dirige
+ResponsableCollecte "1" -- "0..*" Tournee : planifie
+
+' ---------- M1 <-> M2 ----------
+Verger "1" -- "0..*" Alerte : signale
+Alerte "0..1" -- "0..1" Recolte : transformée en\ndemande urgente
+Alerte "0..*" --> "0..1" ResponsableCollecte : prise en charge par
+Alerte "1" *-- "0..*" HistoriqueAlerte : historise
+Utilisateur "1" -- "0..*" Notification : reçoit
+
+' ---------- M3 ----------
+Tournee "1" -- "0..*" Affectation : utilise
+Ressource "1" -- "0..*" Affectation : est affectée
+
+' ---------- M4 ----------
+Verger "1" -- "0..*" ReleveMaturite : possède
+Verger "1" -- "0..*" DonneeMeteo : concerne
+ResponsablePressoir "1" -- "1" Pressoir : gère
+ResponsablePressoir "1" -- "0..*" Reception : enregistre
+Tournee "1" -- "1..*" Reception : donne lieu à
+Reception "*" --> "1" Pressoir : arrive à
+Reception "*" --> "1" Benne : utilise
+
+' ---------- Énumérations ----------
+Verger --> StatutVerger
+Recolte --> StatutRecolte
+HistoriqueRecolte --> StatutRecolte
+Tournee --> StatutTournee
+Alerte --> TypeAlerte
+Alerte --> StatutAlerte
+HistoriqueAlerte --> StatutAlerte
+Reception --> QualiteReception
+
+note "Le **Visiteur** n'a pas de compte : il n'existe pas comme classe\npersistée et consulte uniquement la carte publique." as N1
+note "Le **tableau de bord** n'est pas une entité :\nses indicateurs sont calculés par agrégation MongoDB." as N2
+note "Une **récolte** ne peut pas être annulée\naprès le démarrage de la tournée." as N3
+note "Une **affectation** concerne une seule tournée et une seule ressource\n(ouvrier, tracteur, benne ou matériel).\nLes conflits de disponibilité doivent être vérifiés." as N4
+N1 .. Utilisateur
+N3 .. Recolte
+N4 .. Affectation
+
+' ---------- Aide à la mise en page ----------
+ResponsablePressoir -[hidden]right- ChefEquipe
+ChefEquipe -[hidden]right- ResponsableCollecte
+ResponsableCollecte -[hidden]right- Agriculteur
+Agriculteur -[hidden]right- ResponsableLogistique
+ResponsableLogistique -[hidden]right- Administrateur
+
+legend right
+  <b>Modules (propriétaire)</b>
+  <back:#DCEFD3>  M1 – Gestion des vergers et collectes  </back>
+  <back:#FBE0BA>  M2 – Alertes et notifications  </back>
+  <back:#E1D3F2>  M3 – Gestion des ressources  </back>
+  <back:#C9EBEB>  M4 – Pressoir, carte et données  </back>
+endlegend
+@enduml
