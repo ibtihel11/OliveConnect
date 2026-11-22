@@ -34,3 +34,5 @@ build/
 
 # Local application configuration
 application-local.yml
+
+run.log

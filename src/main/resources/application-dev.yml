@@ -1,0 +1,16 @@
+management:
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    tn.oliveconnect: DEBUG
+
+oliveconnect:
+  simulation:
+    enabled: true
+    interval-ms: 30000
+    initial-delay-ms: 5000
+  seed:
+    enabled: true
