@@ -1,0 +1,1122 @@
+{
+  "info": {
+    "name": "OliveConnect - M4 (carte, dashboard, pressoir)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Lancer l'application avec le profil dev, puis exécuter d'abord le dossier 0 (tokens). Données issues du seed dev."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "tokPressoir",
+      "value": ""
+    },
+    {
+      "key": "tokPressoir2",
+      "value": ""
+    },
+    {
+      "key": "tokCollecte",
+      "value": ""
+    },
+    {
+      "key": "tokAdmin",
+      "value": ""
+    },
+    {
+      "key": "tokAgri",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "0 - Tokens (profil dev) - A LANCER EN PREMIER",
+      "item": [
+        {
+          "name": "Token dev - RESPONSABLE_PRESSOIR (u-pressoir)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dev/token?userId=u-pressoir&role=RESPONSABLE_PRESSOIR",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dev",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "u-pressoir"
+                },
+                {
+                  "key": "role",
+                  "value": "RESPONSABLE_PRESSOIR"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set('tokPressoir', pm.response.json().token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Token dev - RESPONSABLE_PRESSOIR (u-pressoir2)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dev/token?userId=u-pressoir2&role=RESPONSABLE_PRESSOIR",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dev",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "u-pressoir2"
+                },
+                {
+                  "key": "role",
+                  "value": "RESPONSABLE_PRESSOIR"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set('tokPressoir2', pm.response.json().token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Token dev - RESPONSABLE_COLLECTE (u-collecte)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dev/token?userId=u-collecte&role=RESPONSABLE_COLLECTE",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dev",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "u-collecte"
+                },
+                {
+                  "key": "role",
+                  "value": "RESPONSABLE_COLLECTE"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set('tokCollecte', pm.response.json().token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Token dev - ADMINISTRATEUR (u-admin)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dev/token?userId=u-admin&role=ADMINISTRATEUR",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dev",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "u-admin"
+                },
+                {
+                  "key": "role",
+                  "value": "ADMINISTRATEUR"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set('tokAdmin', pm.response.json().token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Token dev - AGRICULTEUR (u-agri1)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dev/token?userId=u-agri1&role=AGRICULTEUR",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dev",
+                "token"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "u-agri1"
+                },
+                {
+                  "key": "role",
+                  "value": "AGRICULTEUR"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.collectionVariables.set('tokAgri', pm.response.json().token);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Carte",
+      "item": [
+        {
+          "name": "Carte publique (sans token) - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/public/carte",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "public",
+                "carte"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "const j = pm.response.json();",
+                  "pm.test('Vergers renvoyés', function () { pm.expect(j.length).to.be.above(0); });",
+                  "pm.test('Pas de donnée sensible', function () { pm.expect(j[0]).to.not.have.property('statutRecolte'); pm.expect(j[0]).to.not.have.property('agriculteurId'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Carte complète sans token - 401",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/carte/vergers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "carte",
+                "vergers"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 401', function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Carte complète (agriculteur) - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/carte/vergers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "carte",
+                "vergers"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Statut de récolte présent', function () { pm.expect(pm.response.json()[0]).to.have.property('statutRecolte'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tableau de bord",
+      "item": [
+        {
+          "name": "Rendement (resp. collecte) - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokCollecte}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/rendement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "rendement"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Délais (admin) - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAdmin}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/delais",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "delais"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Remplissage des bennes (resp. collecte) - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokCollecte}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/remplissage-bennes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "remplissage-bennes"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rendement (agriculteur) - 403",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/rendement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "rendement"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 403', function () { pm.response.to.have.status(403); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Rendement sans token - 401",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/dashboard/rendement",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "dashboard",
+                "rendement"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 401', function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pressoirs",
+      "item": [
+        {
+          "name": "Lister mes pressoirs - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pressoirs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pressoirs"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });",
+                  "pm.test('Pagination', function () { pm.expect(pm.response.json()).to.have.keys('content','page','size','totalElements'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Déclarer/mettre à jour mon pressoir - 200",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pressoirs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pressoirs"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Pressoir Moderne de Sfax\",\n  \"adresse\": \"Zone industrielle Poudrière, Sfax\",\n  \"capaciteTraitement\": 21000\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Capacité négative - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pressoirs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pressoirs"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"X\",\n  \"adresse\": \"Y\",\n  \"capaciteTraitement\": -5\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pressoirs en tant qu'agriculteur - 403",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/pressoirs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pressoirs"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 403', function () { pm.response.to.have.status(403); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Réceptions",
+      "item": [
+        {
+          "name": "Enregistrer une réception (exemple du cadrage) - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 201', function () { pm.response.to.have.status(201); });",
+                  "pm.test('Réponse', function () { const j = pm.response.json(); pm.expect(j.id).to.be.a('string'); pm.expect(j.poids).to.eql(2400.5); pm.expect(j.qualite).to.eql('BONNE'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Poids négatif - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": -10,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Qualité inconnue - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"SUPER\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Benne inconnue - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b999\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 404', function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tournée inconnue - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t999\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 404', function () { pm.response.to.have.status(404); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tournée non démarrée (t8 PLANIFIEE) - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t8\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 409', function () { pm.response.to.have.status(409); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pressoir d'un autre responsable - 403",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokPressoir2}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 403', function () { pm.response.to.have.status(403); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mauvais rôle (agriculteur) - 403",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 403', function () { pm.response.to.have.status(403); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Sans token - 401",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tourneeId\": \"t7\",\n  \"benneId\": \"b3\",\n  \"pressoirId\": \"p1\",\n  \"poids\": 2400.5,\n  \"qualite\": \"BONNE\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 401', function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Lister les réceptions d'une tournée - 200",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions?tourneeId=t5&page=0&size=20",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ],
+              "query": [
+                {
+                  "key": "tourneeId",
+                  "value": "t5"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "20"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 200', function () { pm.response.to.have.status(200); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pagination invalide (size=0) - 400",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{tokAgri}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/receptions?size=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "receptions"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "0"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Statut 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
